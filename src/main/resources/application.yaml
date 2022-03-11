@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    gcp:
+      sql:
+        database-name: ${DATABASE_NAME:DATABASE_NAME_NOT_SET}
+        instance-connection-name: ${INSTANCE_CONNECTION_NAME:INSTANCE_CONNECTION_NAME_NOT_SET}
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/${DATABASE_NAME:DATABASE_NAME_NOT_SET}
+    type: com.zaxxer.hikari.HikariDataSource
+    username: ${DATABASE_USERNAME:DATABASE_USERNAME_NOT_SET}
+    password: ${DATABASE_PASSWORD:DATABASE_PASSWORD_NOT_SET}
+    hikari:
+      maximum-pool-size: 2
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,refresh
